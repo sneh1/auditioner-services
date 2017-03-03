@@ -34,10 +34,10 @@ public class ProductionResourceTest extends org.auditioner.services.family.TestR
         production.setName("Jane Dane");
         production.setAuditionDate(new Date());
         production.setSeason("Spring 2017");
-        production.setLocation("/auditioner/production/1337");
+        production.setLocation("/auditioner/productions/1337");
         when(productionDAO.getProduction(1337L)).thenReturn(production);
 
-        Production actualProduction = simpleGet("/auditioner/production/1337", Production.class);
+        Production actualProduction = simpleGet("/auditioner/productions/1337", Production.class);
 
         assertEquals(actualProduction.getName(), production.getName());
         assertEquals(actualProduction.getAuditionDate(), production.getAuditionDate());
