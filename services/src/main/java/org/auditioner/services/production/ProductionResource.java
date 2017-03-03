@@ -23,4 +23,18 @@ public class ProductionResource {
     public Production getProduction(@PathParam("production_id") long productionId){
         return productionDAO.getProduction(productionId);
     }
+
+    @DELETE
+    @Path("/{production_id}")
+    public void deleteProduction(@PathParam("production_id") long productionId)
+    {
+        productionDAO.deleteProduction(productionId);
+    }
+
+    @PUT
+    @Path("/{production_id}")
+    public void updateFamily(@PathParam("production_id") long productionId, Production production)
+    {
+        productionDAO.updateProduction(productionId, production);
+    }
 }
