@@ -5,11 +5,14 @@ module.exports = function(environment) {
     modulePrefix: 'web',
     environment: environment,
     baseURL: '/',
-    locationType: 'auto',
+    locationType: 'hash',
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
         // e.g. 'with-controller': true
+      },
+      EXTEND_PROTOTYPES: {
+        Date: false,
       }
     },
 
@@ -25,6 +28,17 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
+    ENV['contentSecurityPolicy'] = {
+      'default-src': "'none'",
+      'script-src': "'self' 'unsafe-eval'",
+      'font-src': "'self'",
+      'connect-src': "'self' http://*:8080",
+      'img-src': "'self'",
+      'style-src': "'self'",
+      'media-src': "'self'"
+    };
+
+    ENV.APP.API_URL = 'http://localhost:8080';
   }
 
   if (environment === 'test') {
@@ -40,6 +54,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
+    ENV.APP.API_URL = '/';
 
   }
 
