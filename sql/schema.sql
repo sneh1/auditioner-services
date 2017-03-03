@@ -2,6 +2,7 @@
 CREATE DATABASE auditioner;
 USER auditioner;
 
+CREATE USER 'auditioner'@'localhost' IDENTIFIED BY 'Password1!';
 
 CREATE TABLE `Family` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,

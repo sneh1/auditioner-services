@@ -1,12 +1,13 @@
 
 import Ember from 'ember';
 import Family from 'web/models/family';
+import FamilyMember from 'web/models/familyMember';
 import ListResult from 'web/models/listResult';
 
 
 export default Ember.Service.extend({
   client: Ember.inject.service('client'),
-  search:function(){
+  searchFamilies:function(){
     const client = this.get('client');
     let results = ListResult.create({childType:Family});
 
@@ -16,10 +17,10 @@ export default Ember.Service.extend({
 
     return results;
   },
-  loadById:function(familyId)
+  loadFamilyById:function(familyId)
   {
     const client = this.get('client');
-    const url = '/auditioner/families' + familyId;
+    const url = '/auditioner/families/' + familyId;
 
     const family = Family.create();
 
@@ -27,6 +28,14 @@ export default Ember.Service.extend({
     family.set('path',url);
 
     client.getResource(url,family);
+
+    return family;
+  },
+  reloadFamily:function(family)
+  {
+    const client = this.get('client');
+
+    client.getResource(family.get('location'),family);
 
     return family;
   },
@@ -42,6 +51,19 @@ export default Ember.Service.extend({
     const family = Family.create();
     family.set('client',client);
     return family;
+  },
+  deleteFamilyMember:function(familyMember)
+  {
+    const client = this.get('client');
+
+    return client.deleteResource(familyMember);
+  },
+  createFamilyMember:function()
+  {
+    const client = this.get('client');
+    const familyMember = FamilyMember.create();
+    familyMember.set('client',client);
+    return familyMember;
   }
 
 });
