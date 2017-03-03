@@ -13,9 +13,12 @@
             </thead>
             <tbody>
             {{#each model.results as |result| }}
+            <tr>
               {{#link-to 'families.family' result.id tagName='tr' class="clickable"}}
                 <td>{{result.name}}</td>
               {{/link-to}}
+              <td><a {{action 'deleteFamily' result}} ><span class="glyphicon btn-sm glyphicon-ok"></span></a></td>
+            </tr>
             {{/each}}
             </tbody>
           </table>

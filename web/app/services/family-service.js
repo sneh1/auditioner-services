@@ -30,6 +30,12 @@ export default Ember.Service.extend({
 
     return family;
   },
+  deleteFamily:function(family)
+  {
+    const client = this.get('client');
+
+    return client.deleteResource(family);
+  },
   createFamily:function()
   {
     const client = this.get('client');

@@ -70,7 +70,7 @@ var client = Ember.Service.extend({
     return new Ember.RSVP.Promise(function (resolve, reject) {
 
       Ember.$.ajax({
-        url:client.buildUrl(resource.get('path')),
+        url:client.buildUrl(resource.get('location')),
         async:true,
         type: 'DELETE',
         contentType: "application/json; charset=utf-8"
