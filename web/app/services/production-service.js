@@ -38,7 +38,7 @@ export default Ember.Service.extend({
 
     return production;
   },
-  deleteFamily:function(production)
+  deleteProduction:function(production)
   {
     const client = this.get('client');
 
