@@ -19,7 +19,7 @@ export default Ember.Service.extend({
   loadById:function(familyId)
   {
     const client = this.get('client');
-    const url = '/auditioner/families' + familyId;
+    const url = '/auditioner/families/' + familyId;
 
     const family = Family.create();
 
@@ -27,6 +27,14 @@ export default Ember.Service.extend({
     family.set('path',url);
 
     client.getResource(url,family);
+
+    return family;
+  },
+  reload:function(family)
+  {
+    const client = this.get('client');
+
+    client.getResource(family.get('location'),family);
 
     return family;
   },

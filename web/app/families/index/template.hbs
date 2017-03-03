@@ -1,33 +1,37 @@
 <div class="row">
-  <div class="col-md-12">
-    <div class="row filter_bar row_marginless">
-    </div>
-    {{#if model.hasItems }}
-      <div class="row">
-        <div class="col-md-12 search_list">
-          <table class="table table-striped cms-table-striped table-hover table-condensed table-bordered ">
-            <thead>
-            <tr>
-              <th class="col-md-9">Name</th>
-            </tr>
-            </thead>
+  <div class="col-md-6">
+    <div class="row">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <div class="row">
+            <div class="col-md-9">
+              <h3 class="panel-title">Families</h3>
+            </div>
+            <div class="col-md-3 text-right">
+              <a {{action 'addFamily' result}} ><span class="glyphicon glyphicon-plus"></span></a>
+            </div>
+          </div>
+        </div>
+        <div class="panel-body">
+          <table class="table table-striped table-hover table-condensed">
             <tbody>
             {{#each model.results as |result| }}
-            <tr>
-              {{#link-to 'families.family' result.id tagName='tr' class="clickable"}}
-                <td>{{result.name}}</td>
-              {{/link-to}}
-              <td><a {{action 'deleteFamily' result}} ><span class="glyphicon btn-sm glyphicon-ok"></span></a></td>
-            </tr>
+              <tr>
+                {{#link-to 'families.family' result.id tagName='td' class="col-md-10"}}
+                  {{result.name}}
+                {{/link-to}}
+                <td class="col-md-1">
+                  <a {{action 'editFamily' result}} ><span class="glyphicon glyphicon-pencil"></span></a>
+                </td>
+                <td class="col-md-1">
+                  <a {{action 'deleteFamily' result}} ><span class="glyphicon glyphicon-trash"></span></a>
+                </td>
+              </tr>
             {{/each}}
             </tbody>
           </table>
         </div>
       </div>
-    {{else}}
-      <div class="row search_list">
-        <div class="col-md-4 col-md-offset-4 text-center">No Results</div>
-      </div>
-    {{/if}}
+    </div>
   </div>
 </div>
