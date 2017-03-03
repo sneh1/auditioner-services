@@ -5,3 +5,10 @@ server:
   adminConnectors:
     - type: http
       port: 8081
+database:
+  driverClass: com.mysql.jdbc.Driver
+  user: auditioner
+  password: Password1!
+  url: jdbc:mysql://localhost/auditioner?useSSL=false
+  properties:
+    charSet: UTF-8
