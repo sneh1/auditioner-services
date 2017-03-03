@@ -9,6 +9,9 @@ import org.mockito.ArgumentCaptor;
 
 import javax.ws.rs.core.Response;
 
+import java.util.List;
+
+import static com.google.common.collect.Lists.newArrayList;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertEquals;
@@ -52,6 +55,38 @@ public class FamilyResourceTest extends TestResourceBase {
         assertEquals(204,response.getStatus());
 
         verify(familyDAO).deleteFamily(12L);
+    }
+
+    @Test
+    public void getFamilyWillReturnFamily(){
+        Family family = new Family();
+        family.setName("theName");
+        family.setLocation("/auditioner/family/12");
+
+        when(familyDAO.getFamily(12L)).thenReturn(family);
+
+        Family actualFamily = simpleGet("/auditioner/family/12",Family.class);
+
+        assertEquals(actualFamily.getName(),family.getName());
+        assertEquals(actualFamily.getLocation(),family.getLocation());
+   }
+
+    @Test
+    public void getFamiliesWillReturnFamilyList(){
+        Family family1 = new Family();
+        family1.setName("one");
+        family1.setLocation("/auditioner/family/1");
+        Family family2 = new Family();
+        family2.setName("two");
+        family2.setLocation("/auditioner/family/2");
+
+        List<Family> familyList = newArrayList(family1,family2);
+
+        when(familyDAO.getFamilies()).thenReturn(familyList);
+
+        Response response = simpleGet("/auditioner/family");
+
+        assertEquals(asJsonString(familyList),getResponseBody(response));
     }
 
     @Test
