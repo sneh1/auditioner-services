@@ -5,9 +5,6 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
   familyService: Ember.inject.service('family-service'),
   actions:{
-    editFamily:function(family) {
-
-    },
     deleteFamily:function(family){
       const familyService = this.get('familyService');
       const model = this.get('model');

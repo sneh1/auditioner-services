@@ -1,29 +1,37 @@
 <div class="row">
   <div class="col-md-6">
     <div class="row">
-      <div class="col-md-12">
-        <table class="table table-striped cms-table-striped table-hover table-condensed table-bordered ">
-          <thead>
-          <tr>
-            <th class="col-md-9" colspan="2">Families</th>
-          </tr>
-          </thead>
-          <tbody>
-          {{#each model.results as |result| }}
-            <tr>
-              <td class="col-xs-10">{{result.name}}</td>
-              <td>
-                <a {{action 'editFamily' result}} ><span class="glyphicon glyphicon-pencil"></span></a>
-                <a {{action 'deleteFamily' result}} ><span class="glyphicon glyphicon-trash"></span></a>
-              </td>
-            </tr>
-          {{/each}}
-          </tbody>
-        </table>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <div class="row">
+            <div class="col-md-9">
+              <h3 class="panel-title">Families</h3>
+            </div>
+            <div class="col-md-3 text-right">
+              <a {{action 'addFamily' result}} ><span class="glyphicon glyphicon-plus"></span></a>
+            </div>
+          </div>
+        </div>
+        <div class="panel-body">
+          <table class="table table-striped table-hover table-condensed">
+            <tbody>
+            {{#each model.results as |result| }}
+              <tr>
+                {{#link-to 'families.family' result.id tagName='td' class="col-md-10"}}
+                  {{result.name}}
+                {{/link-to}}
+                <td class="col-md-1">
+                  <a {{action 'editFamily' result}} ><span class="glyphicon glyphicon-pencil"></span></a>
+                </td>
+                <td class="col-md-1">
+                  <a {{action 'deleteFamily' result}} ><span class="glyphicon glyphicon-trash"></span></a>
+                </td>
+              </tr>
+            {{/each}}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="col-md-6">
-    Add Family
   </div>
 </div>
