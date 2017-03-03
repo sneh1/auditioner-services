@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="row filter_bar row_marginless">
+    </div>
+    {{#if model.hasItems }}
+      <div class="row">
+        <div class="col-md-12 search_list">
+          <table class="table table-striped cms-table-striped table-hover table-condensed table-bordered ">
+            <thead>
+            <tr>
+              <th class="col-md-9">Name</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#each model.results as |result| }}
+              {{#link-to 'families.family' result.id tagName='tr' class="clickable"}}
+                <td>{{result.name}}</td>
+              {{/link-to}}
+            {{/each}}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    {{else}}
+      <div class="row search_list">
+        <div class="col-md-4 col-md-offset-4 text-center">No Results</div>
+      </div>
+    {{/if}}
+  </div>
+</div>
