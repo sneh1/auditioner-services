@@ -10,8 +10,11 @@ import org.junit.Test;
 
 import javax.ws.rs.core.Response;
 
+import java.util.Date;
+
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 public class ProductionResourceTest extends org.auditioner.services.family.TestResourceBase {
 
@@ -28,7 +31,14 @@ public class ProductionResourceTest extends org.auditioner.services.family.TestR
     @Test
     public void getProductionReturn200(){
         Production production = new Production();
-        Response response = simplePost("/auditioner/production", production);
+        production.setName("Jane Dane");
+        production.setAuditionDate(new Date());
+        production.setSeason("Spring 2017");
+
+        when(productionDAO.getProduction()).thenReturn(production);
+
+        Response response = simpleGet("/auditioner/production");
+
         assertEquals(200,response.getStatus());
     }
 }

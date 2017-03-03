@@ -16,4 +16,10 @@ public interface ProductionDAO{
             "  SET Name=:production.name " +
             "WHERE id=:id")
     void updateFamily(@Bind("id") long productionId,@BindBean("production") Production production);
+
+    @SqlQuery("SELECT id, Name " +
+            "FROM Family " +
+            "WHERE id=:id")
+    @Mapper(FamilyResultSetMapper.class)
+    Family getFamily(@Bind("id") long familyId);
 }

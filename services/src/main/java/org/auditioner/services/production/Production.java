@@ -1,8 +1,10 @@
 package org.auditioner.services.production;
 
+import java.util.Date;
+
 public class Production{
     private String name;
-    private String auditionDate;
+    private Date auditionDate;
     private String season;
 
     public String getName() {
@@ -13,11 +15,11 @@ public class Production{
         this.name = name;
     }
 
-    public String getAuditionDate() {
+    public Date getAuditionDate() {
         return auditionDate;
     }
 
-    public void setAuditionDate(String auditionDate) {
+    public void setAuditionDate(Date auditionDate) {
         this.auditionDate = auditionDate;
     }
 
