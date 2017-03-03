@@ -1,6 +1,7 @@
 package org.auditioner.services.family;
 
 public class Family {
+    private String location;
     private String name;
 
     public String getName() {
@@ -9,5 +10,13 @@ public class Family {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
     }
 }
