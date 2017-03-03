@@ -1,4 +1,17 @@
-<h1>Auditioner</h1>
-<div>
+{{#bs-navbar as |navbar| }}
+  <div class="navbar-header">
+
+    {{#link-to 'index' class='navbar-brand'}}Auditioner{{/link-to}}
+  </div>
+  {{#navbar.content}}
+    {{#navbar.nav as |nav|}}
+      {{#nav.item}}{{#link-to 'families'}}Families{{/link-to}}{{/nav.item}}
+    {{/navbar.nav}}
+    {{#navbar.nav as |nav|}}
+      {{#nav.item}}<a>Logout</a>{{/nav.item}}
+    {{/navbar.nav}}
+  {{/navbar.content}}
+{{/bs-navbar}}
+<div class="container-fluid">
   {{outlet}}
 </div>
