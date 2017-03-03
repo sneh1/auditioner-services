@@ -8,7 +8,6 @@ import org.junit.Test;
 import org.mockito.ArgumentCaptor;
 
 import javax.ws.rs.core.Response;
-
 import java.util.List;
 
 import static com.google.common.collect.Lists.newArrayList;
