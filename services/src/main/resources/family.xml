@@ -8,7 +8,7 @@
                 <constraints nullable="false" primaryKey="true" />
             </column>
    
-   			<column name="Name" type="nvarchar(250)">
+   			<column name="Name" type="nvarchar(128)">
 				<constraints nullable="false" />
 			</column>
 	</createTable>
